@@ -10,14 +10,6 @@ CLASSES
         RobotStatus
 
     class RobotStatus(enum.Enum)
-     |  RobotStatus(value, names=None, *, module=None, qualname=None, type=None, start=1)
-     |
-     |  An enumeration.
-     |
-     |  Method resolution order:
-     |      RobotStatus
-     |      enum.Enum
-     |      builtins.object
      |
      |  Data and other attributes defined here:
      |
