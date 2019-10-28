@@ -21,9 +21,6 @@ CLASSES
      |  connect(self)
      |      Connects to vector initialized
      |
-     |  detectCliff(self)
-     |      Returns true if hanging over a cliff
-     |
      |  dockCube(self)
      |      Docks to connected cube
      |
@@ -35,6 +32,27 @@ CLASSES
      |
      |  forward(self, distance, speed)
      |      Makes vector go forward
+     |
+     |  getStatus(self, statusCheck)
+     |      Returns true for status that was passed (most wont be used) (1-17)
+     |
+     |      1. Motors: True if motors are moving
+     |      2. Wheels: True if wheels are moving
+     |      3. Animating: True if doing an animation
+     |      4. Held: True if being held
+     |      5. Button Press: True if the button is pressed
+     |      6. Carrying Block: True if carrying block
+     |      7. Charging: True if charging
+     |      8. Detected Cliff: True if on cliff
+     |      9. Docking to marker: True if Vector has seen a marker and is actively heading toward it (for example his charger or cube)
+     |      10. Falling: True if falling
+     |      11. Head in pos: True if VectorÆs head is in the desired position (False if still trying to move there)
+     |      12. Calm power mode: True if Vector is in calm power mode. Calm power mode is generally when Vector is sleeping or charging.
+     |      13. Lift in pos: True if VectorÆs arm is in the desired position (False if still trying to move it there)
+     |      14. On charger: True if on charger
+     |      15. Pathing: True if traversing a path
+     |      16. Picked up: True if currently picked up
+     |      17. Moving: True if Vector is in motion. This includes any of his motors (head, arm, wheels/tracks) and if he is being lifted, carried, or falling.
      |
      |  isTouch(self)
      |      Outputs true if touched

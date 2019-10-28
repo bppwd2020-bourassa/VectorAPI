@@ -48,12 +48,6 @@ class VectorOBJ:
 		"""
 		self.conn.behavior.turn_in_place(degrees(-angle))
 
-	def detectCliff(self):
-		"""
-		Returns true if hanging over a cliff
-		"""
-		return(self.conn.status.is_cliff_detected)
-
 	def raiseArm(self):
 		"""
 		Raises arm
@@ -140,3 +134,60 @@ class VectorOBJ:
 		Stremas the wav file from specified path with specified volume(0-100)
 		"""
 		self.conn.audio.stream_wav_file(path, volume)
+
+	def getStatus(self, statusCheck):
+		"""
+		Returns true for status that was passed (most wont be used) (1-17)
+
+		1. Motors: True if motors are moving
+		2. Wheels: True if wheels are moving
+		3. Animating: True if doing an animation
+		4. Held: True if being held
+		5. Button Press: True if the button is pressed
+		6. Carrying Block: True if carrying block
+		7. Charging: True if charging
+		8. Detected Cliff: True if on cliff
+		9. Docking to marker: True if Vector has seen a marker and is actively heading toward it (for example his charger or cube)
+		10. Falling: True if falling
+		11. Head in pos: True if Vector’s head is in the desired position (False if still trying to move there)
+		12. Calm power mode: True if Vector is in calm power mode. Calm power mode is generally when Vector is sleeping or charging.
+		13. Lift in pos: True if Vector’s arm is in the desired position (False if still trying to move it there)
+		14. On charger: True if on charger
+		15. Pathing: True if traversing a path
+		16. Picked up: True if currently picked up
+		17. Moving: True if Vector is in motion. This includes any of his motors (head, arm, wheels/tracks) and if he is being lifted, carried, or falling.
+		"""
+		if statusCheck == 1:
+			return self.conn.status.are_motors_moving
+		if statusCheck == 2:
+			return self.conn.status.are_wheels_moving
+		if statusCheck == 3:
+			return self.conn.status.is_animating
+		if statusCheck == 4:
+			return self.conn.status.is_being_held
+		if statusCheck == 5:
+			return self.conn.status.is_button_pressed
+		if statusCheck == 6:
+			return self.conn.status.is_carrying_block
+		if statusCheck == 7:
+			return self.conn.status.is_charging
+		if statusCheck == 8:
+			return self.conn.status.is_cliff_detected
+		if statusCheck == 9:
+			return self.conn.status.is_docking_to_marker
+		if statusCheck == 10:
+			return self.conn.status.is_falling
+		if statusCheck == 11:
+			return self.conn.status.is_head_in_pos
+		if statusCheck == 12:
+			return self.conn.status.is_in_calm_power_mode
+		if statusCheck == 13:
+			return self.conn.status.is_lift_in_pos
+		if statusCheck == 14:
+			return self.conn.status.is_on_charger
+		if statusCheck == 15:
+			return self.conn.status.is_pathing
+		if statusCheck == 16:
+			return self.conn.status.is_picked_up
+		if statusCheck == 17:
+			return self.conn.status.is_robot_moving
