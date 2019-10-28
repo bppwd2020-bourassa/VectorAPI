@@ -50,7 +50,7 @@ class VectorOBJ:
 
 	def detectCliff(self):
 		"""
-		Returns true if cliff is detected
+		Returns true if hanging over a cliff
 		"""
 		return(self.conn.status.is_cliff_detected)
 
@@ -76,7 +76,8 @@ class VectorOBJ:
 
 	def lowerHead(self):
 		"""
-		Lowers head"""
+		Lowers head
+		"""
 		self.conn.motors.set_head_motor(-5.0)
 
 	def talk(self, text):
@@ -121,3 +122,21 @@ class VectorOBJ:
 			is_being_touched = touch_data.is_being_touched
 			if is_being_touched:
 				return True
+
+	def openCamera(self, length, count):
+		"""
+		Displays camera for length (sec) counts down for how much longer you have
+		"""
+		while (length > 0):
+			self.conn.vision.enable_face_detection(detect_faces=True)
+			self.conn.vision.enable_custom_object_detection(detect_custom_objects=True)
+			self.conn.vision.enable_display_camera_feed_on_face(display_camera_feed_on_face=True)
+			if count:
+				self.conn.behavior.say_text(str(length))
+			length = length - 1
+
+	def streamWAVFile(self, path, volume):
+		"""
+		Stremas the wav file from specified path with specified volume(0-100)
+		"""
+		self.conn.audio.stream_wav_file(path, volume)

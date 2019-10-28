@@ -21,7 +21,7 @@ class VectorObj:
 	def driveStraight(self, distanceMM, speedMMPS):
 		"""
 		Method for driving
-		Positive for forward Negative for backward 
+		Positive for forward Negative for backward
 		"""
 		self.conn.behavior.drive_straight(distance_mm(distanceMM), speed_mmps(speedMMPS))
 
@@ -63,7 +63,7 @@ class VectorObj:
 	def showViewer(self, duration):
 		"""
 		Shows the camera feed
-		
+
 		NOT FUNCTIONAL
 		"""
 		self.conn.viewer.show(timeout=10.0)

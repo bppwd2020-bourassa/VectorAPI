@@ -29,4 +29,8 @@ if vector.isTouch():
 
 vector.objectDetected()
 
+vector.streamWAVFile('Pacman-death-sound.wav', 50)
+
+vector.openCamera(100, True)
+
 vector.talk("Done")
