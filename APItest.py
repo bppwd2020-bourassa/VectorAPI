@@ -17,12 +17,6 @@ vector.dockCube()
 vector.raiseArm()
 vector.lowerArm()
 
-if not vector.detectCliff():
-	vector.talk("Not on cliff")
-if vector.detectCliff():
-	vector.talk("Im on a cliff")
-
-
 if vector.isTouch():
 	vector.talk("Im being touched")
 
@@ -30,14 +24,8 @@ vector.objectDetected()
 
 vector.streamWAVFile('Pacman-death-sound.wav', 50)
 
-vector.openCamera(100, True)
+vector.openCamera(30, True)
 
-"""
-Take out of comments if you want to test otherwise don't it'll interrupt other code
-"""
-"""
-while True:
-	if vector.getStatus(5):
-		vector.talk("Hi")
-"""
+print(vector.getStatus(RobotStatus.motors_moving))
+
 vector.talk("Done")

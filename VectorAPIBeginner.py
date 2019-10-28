@@ -3,6 +3,26 @@ from anki_vector.behavior import MIN_HEAD_ANGLE, MAX_HEAD_ANGLE
 from anki_vector.util import degrees
 from anki_vector.util import distance_mm, speed_mmps
 import time
+from enum import Enum, auto
+
+class RobotStatus(Enum):
+  motors_moving = auto()
+  wheels_moving = auto()
+  is_animating = auto()
+  being_held = auto()
+  button_pressed = auto()
+  carrying_block = auto()
+  is_charging = auto()
+  cliff_detected = auto()
+  docking_to_marker = auto()
+  is_falling = auto()
+  head_in_pos = auto()
+  calm_power_mode = auto()
+  lift_in_pos = auto()
+  on_charger = auto()
+  is_pathing = auto()
+  is_picked_up = auto()
+  is_moving = auto()
 
 class VectorOBJ:
 
@@ -137,57 +157,58 @@ class VectorOBJ:
 
 	def getStatus(self, statusCheck):
 		"""
-		Returns true for status that was passed (most wont be used) (1-17)
+		Returns true for status that was passed (most wont be used)  RobotStatus.(1-17)
 
-		1. Motors: True if motors are moving
-		2. Wheels: True if wheels are moving
-		3. Animating: True if doing an animation
-		4. Held: True if being held
-		5. Button Press: True if the button is pressed
-		6. Carrying Block: True if carrying block
-		7. Charging: True if charging
-		8. Detected Cliff: True if on cliff
-		9. Docking to marker: True if Vector has seen a marker and is actively heading toward it (for example his charger or cube)
-		10. Falling: True if falling
-		11. Head in pos: True if Vector’s head is in the desired position (False if still trying to move there)
-		12. Calm power mode: True if Vector is in calm power mode. Calm power mode is generally when Vector is sleeping or charging.
-		13. Lift in pos: True if Vector’s arm is in the desired position (False if still trying to move it there)
-		14. On charger: True if on charger
-		15. Pathing: True if traversing a path
-		16. Picked up: True if currently picked up
-		17. Moving: True if Vector is in motion. This includes any of his motors (head, arm, wheels/tracks) and if he is being lifted, carried, or falling.
+		1. motors_moving: True if motors are moving
+		2. wheels_moving: True if wheels are moving
+		3. is_animating: True if doing an animation
+		4. being_held: True if being held
+		5. button_press: True if the button is pressed
+		6. carrying_block: True if carrying block
+		7. is_charging: True if charging
+		8. cliff_detected: True if on cliff
+		9. docking_to_marker: True if Vector has seen a marker and is actively heading toward it (for example his charger or cube)
+		10. is_falling: True if falling
+		11. head_in_pos: True if Vector’s head is in the desired position (False if still trying to move there)
+		12. calm_power_mode: True if Vector is in calm power mode. Calm power mode is generally when Vector is sleeping or charging.
+		13. lift_in_pos: True if Vector’s arm is in the desired position (False if still trying to move it there)
+		14. on_charger: True if on charger
+		15. is_pathing: True if traversing a path
+		16. is_picked_up: True if currently picked up
+		17. is_moving: True if Vector is in motion. This includes any of his motors (head, arm, wheels/tracks) and if he is being lifted, carried, or falling.
 		"""
-		if statusCheck == 1:
+
+		if statusCheck == RobotStatus.motors_moving:
 			return self.conn.status.are_motors_moving
-		if statusCheck == 2:
+		if statusCheck == RobotStatus.wheels_moving:
 			return self.conn.status.are_wheels_moving
-		if statusCheck == 3:
+		if statusCheck == RobotStatus.is_animating:
 			return self.conn.status.is_animating
-		if statusCheck == 4:
+		if statusCheck == RobotStatus.being_held:
 			return self.conn.status.is_being_held
-		if statusCheck == 5:
+		if statusCheck == RobotStatus.button_pressed:
 			return self.conn.status.is_button_pressed
-		if statusCheck == 6:
+		if statusCheck == RobotStatus.carrying_block:
 			return self.conn.status.is_carrying_block
-		if statusCheck == 7:
+		if statusCheck == RobotStatus.is_charging:
 			return self.conn.status.is_charging
-		if statusCheck == 8:
+		if statusCheck == RobotStatus.cliff_detected:
 			return self.conn.status.is_cliff_detected
-		if statusCheck == 9:
+		if statusCheck == RobotStatus.docking_to_marker:
 			return self.conn.status.is_docking_to_marker
-		if statusCheck == 10:
+		if statusCheck == RobotStatus.is_falling:
 			return self.conn.status.is_falling
-		if statusCheck == 11:
+		if statusCheck == RobotStatus.head_in_pos:
 			return self.conn.status.is_head_in_pos
-		if statusCheck == 12:
+		if statusCheck == RobotStatus.calm_power_mode:
 			return self.conn.status.is_in_calm_power_mode
-		if statusCheck == 13:
+		if statusCheck == RobotStatus.lift_in_pos:
 			return self.conn.status.is_lift_in_pos
-		if statusCheck == 14:
+		if statusCheck == RobotStatus.on_charger:
 			return self.conn.status.is_on_charger
-		if statusCheck == 15:
+		if statusCheck == RobotStatus.is_pathing:
 			return self.conn.status.is_pathing
-		if statusCheck == 16:
+		if statusCheck == RobotStatus.is_picked_up:
 			return self.conn.status.is_picked_up
-		if statusCheck == 17:
+		if statusCheck == RobotStatus.is_moving:
 			return self.conn.status.is_robot_moving
