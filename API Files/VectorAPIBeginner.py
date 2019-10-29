@@ -3,7 +3,6 @@ from anki_vector.behavior import MIN_HEAD_ANGLE, MAX_HEAD_ANGLE
 from anki_vector.util import degrees
 from anki_vector.util import distance_mm, speed_mmps
 import time
-from enum import Enum, auto
 
 class VectorOBJ:
 
@@ -139,7 +138,7 @@ class VectorOBJ:
 	def animation(self, anim_name):
 		"""
 		Plays the animation given
-		for the list of animations run anim_names.py
+		for the list of animations
 		"""
 		self.conn.anim.play_animation(anim_name)
 

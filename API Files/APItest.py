@@ -25,7 +25,7 @@ vector.objectDetected()
 vector.streamWAVFile('Pacman-death-sound.wav', 50)
 
 vector.openCamera(30, True)
-
+"""
 print(vector.getStatus("motors_moving"))
 
 vector.talk("Done")
