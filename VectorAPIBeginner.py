@@ -5,25 +5,6 @@ from anki_vector.util import distance_mm, speed_mmps
 import time
 from enum import Enum, auto
 
-class RobotStatus(Enum):
-	motors_moving = auto()
-	wheels_moving = auto()
-	is_animating = auto()
-	being_held = auto()
-	button_pressed = auto()
-	carrying_block = auto()
-	is_charging = auto()
-	cliff_detected = auto()
-	docking_to_marker = auto()
-	is_falling = auto()
-	head_in_pos = auto()
-	calm_power_mode = auto()
-	lift_in_pos = auto()
-	on_charger = auto()
-	is_pathing = auto()
-	is_picked_up = auto()
-	is_moving = auto()
-
 class VectorOBJ:
 
 	def __init__(self, serial):
@@ -155,9 +136,19 @@ class VectorOBJ:
 		"""
 		self.conn.audio.stream_wav_file(path, volume)
 
+	def animation(self, anim_name):
+		"""
+		Plays the animation given
+		for the list of animations run anim_names.py
+		"""
+		self.conn.anim.play_animation(anim_name)
+
+	def pick_up_cube(self):
+
+
 	def getStatus(self, statusCheck):
 		"""
-		Returns true for status that was passed (most wont be used)  RobotStatus.(1-17)
+		Returns true for status that was passed (most wont be used) (1-17)
 
 		1. motors_moving: True if motors are moving
 		2. wheels_moving: True if wheels are moving
@@ -178,37 +169,6 @@ class VectorOBJ:
 		17. is_moving: True if Vector is in motion. This includes any of his motors (head, arm, wheels/tracks) and if he is being lifted, carried, or falling.
 		"""
 
-		if statusCheck == RobotStatus.motors_moving:
-			return self.conn.status.are_motors_moving
-		if statusCheck == RobotStatus.wheels_moving:
-			return self.conn.status.are_wheels_moving
-		if statusCheck == RobotStatus.is_animating:
-			return self.conn.status.is_animating
-		if statusCheck == RobotStatus.being_held:
-			return self.conn.status.is_being_held
-		if statusCheck == RobotStatus.button_pressed:
-			return self.conn.status.is_button_pressed
-		if statusCheck == RobotStatus.carrying_block:
-			return self.conn.status.is_carrying_block
-		if statusCheck == RobotStatus.is_charging:
-			return self.conn.status.is_charging
-		if statusCheck == RobotStatus.cliff_detected:
-			return self.conn.status.is_cliff_detected
-		if statusCheck == RobotStatus.docking_to_marker:
-			return self.conn.status.is_docking_to_marker
-		if statusCheck == RobotStatus.is_falling:
-			return self.conn.status.is_falling
-		if statusCheck == RobotStatus.head_in_pos:
-			return self.conn.status.is_head_in_pos
-		if statusCheck == RobotStatus.calm_power_mode:
-			return self.conn.status.is_in_calm_power_mode
-		if statusCheck == RobotStatus.lift_in_pos:
-			return self.conn.status.is_lift_in_pos
-		if statusCheck == RobotStatus.on_charger:
-			return self.conn.status.is_on_charger
-		if statusCheck == RobotStatus.is_pathing:
-			return self.conn.status.is_pathing
-		if statusCheck == RobotStatus.is_picked_up:
-			return self.conn.status.is_picked_up
-		if statusCheck == RobotStatus.is_moving:
-			return self.conn.status.is_robot_moving
+		status = {'motors_moving': self.conn.status.are_motors_moving, 'wheels_moving': self.conn.status.are_wheels_moving, 'is_animating': self.conn.status.is_animating, 'being_held':self.conn.status.is_being_held, 'button_pressed': self.conn.status.is_button_pressed, 'carrying_block': self.conn.status.is_carrying_block, 'is_charging': self.conn.status.is_charging, 'cliff_detected': self.conn.status.is_cliff_detected, 'docking_to_marker': self.conn.status.is_docking_to_marker, 'is_falling': self.conn.status.is_falling, 'head_in_pos': self.conn.status.is_head_in_pos, 'calm_power_mode': self.conn.status.is_in_calm_power_mode, 'lift_in_pos':self.conn.status.is_lift_in_pos, 'on_charger':self.conn.status.is_on_charger, 'is_pathing':self.conn.status.is_pathing, 'is_picked_up':self.conn.status.is_picked_up, 'is_moving':self.conn.status.is_robot_moving}
+
+		return status[statusCheck]

@@ -5,7 +5,7 @@ This is a test file to play with the api, I suggest testing using this first
 """
 vector = VectorOBJ("00406214")
 vector.connect()
-
+"""
 vector.right(90)
 vector.left(90)
 
@@ -25,7 +25,7 @@ vector.objectDetected()
 vector.streamWAVFile('Pacman-death-sound.wav', 50)
 
 vector.openCamera(30, True)
-
-print(vector.getStatus(RobotStatus.motors_moving))
+"""
+print(vector.getStatus("motors_moving"))
 
 vector.talk("Done")
