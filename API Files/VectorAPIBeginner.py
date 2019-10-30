@@ -143,7 +143,14 @@ class VectorOBJ:
 		self.conn.anim.play_animation(anim_name)
 
 	def pick_up_cube(self):
-
+		"""
+		Automatically picks up cube (line him up with cube)
+		"""
+		print("Connecting")
+		self.conn.world.connect_cube()
+		if self.conn.world.connected_light_cube:
+			self.conn.behavior.dock_with_cube(self.conn.world.connected_light_cube)
+			self.conn.motors.set_lift_motor(5.0)
 
 	def getStatus(self, statusCheck):
 		"""
