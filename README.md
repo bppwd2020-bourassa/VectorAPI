@@ -2,7 +2,7 @@
 
 ## Methods
 
-# Documentation
+## Documentation
 
 NAME
     VectorAPIBeginner
@@ -95,7 +95,7 @@ CLASSES
      |  talk(self, text)
      |      Vector says the text
 
-# Animations
+###### Animations
 
 List all animation names:
 anim_gazing_lookatsurfaces_getin_right_01_head_angle_-20
