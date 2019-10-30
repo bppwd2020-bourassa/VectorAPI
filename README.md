@@ -1,5 +1,9 @@
 # VectorAPI
 
+## Methods
+
+# Documentation
+
 NAME
     VectorAPIBeginner
 
