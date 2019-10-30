@@ -8,9 +8,6 @@ win=pygame.display.set_mode((screenwidth,screenheight))
 
 clock = pygame.time.Clock()
 
-global x
-global y
-
 x = 175
 y = 175
 width = 50
@@ -21,18 +18,22 @@ def draw():
 	pygame.draw.rect(win,(255,0,0),pygame.Rect(x,y,width,height))
 
 def update():
-    global x
-    global y
+    global x,y
     pygame.display.update()
     clickX = pygame.mouse.get_pos()[0]
     clickY = pygame.mouse.get_pos()[1]
     if pygame.mouse.get_pressed()[0] == 1:
         if clickX >= x and clickX <= x + width and clickY >= y and clickY <= y + height:
-            x = clickX
-            y = clickY
-
+            x = clickX - 25
+            y = clickY - 25
         else:
             print(clickX, clickY)
+            x = 175
+            y = 175
+    else:
+        x = 175
+        y = 175
+
 
 run = True
 while run:
