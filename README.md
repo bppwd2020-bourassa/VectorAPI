@@ -1,21 +1,7 @@
 # VectorAPI
 
 ## Methods
-
-## Documentation
-
-NAME
-    VectorAPIBeginner
-
-CLASSES
-    builtins.object
-        VectorOBJ
-
-    class VectorOBJ(builtins.object)
-     |  VectorOBJ(serial)
-     |
-     |  Methods defined here:
-     |
+    
      |  __init__(self, serial)
      |      Constructor for the vector obj
      |
@@ -55,12 +41,12 @@ CLASSES
      |      9. docking_to_marker: True if Vector has seen a marker and is actively heading toward it (for example his charger or cube)
      |      10. is_falling: True if falling
      |      11. head_in_pos: True if VectorÆs head is in the desired position (False if still trying to move there)
-     |      12. calm_power_mode: True if Vector is in calm power mode. Calm power mode is generally when Vector is sleeping or charging.
+     |      12. calm_power_mode: True if Vector is in calm power mode. Calm power mode is generally when Vector is sleeping or                      charging.
      |      13. lift_in_pos: True if VectorÆs arm is in the desired position (False if still trying to move it there)
      |      14. on_charger: True if on charger
      |      15. is_pathing: True if traversing a path
      |      16. is_picked_up: True if currently picked up
-     |      17. is_moving: True if Vector is in motion. This includes any of his motors (head, arm, wheels/tracks) and if he is being lifted, carried, or falling.
+     |      17. is_moving: True if Vector is in motion. This includes any of his motors (head, arm, wheels/tracks) and if he is being                   lifted, carried, or falling.
      |
      |  isTouch(self)
      |      Outputs true if touched
