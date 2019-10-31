@@ -178,3 +178,12 @@ class VectorOBJ:
 		status = {'motors_moving': self.conn.status.are_motors_moving, 'wheels_moving': self.conn.status.are_wheels_moving, 'is_animating': self.conn.status.is_animating, 'being_held':self.conn.status.is_being_held, 'button_pressed': self.conn.status.is_button_pressed, 'carrying_block': self.conn.status.is_carrying_block, 'is_charging': self.conn.status.is_charging, 'cliff_detected': self.conn.status.is_cliff_detected, 'docking_to_marker': self.conn.status.is_docking_to_marker, 'is_falling': self.conn.status.is_falling, 'head_in_pos': self.conn.status.is_head_in_pos, 'calm_power_mode': self.conn.status.is_in_calm_power_mode, 'lift_in_pos':self.conn.status.is_lift_in_pos, 'on_charger':self.conn.status.is_on_charger, 'is_pathing':self.conn.status.is_pathing, 'is_picked_up':self.conn.status.is_picked_up, 'is_moving':self.conn.status.is_robot_moving}
 
 		return status[statusCheck]
+
+	def stop_wheel_motors(self):
+		self.conn.motors.stop_all_motors()
+
+	def __set_wheel_motors(self, left, right):
+		"""
+		Sets the wheels motors
+		"""
+		self.conn.motors.set_wheel_motors(left, right)
