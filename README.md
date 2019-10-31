@@ -1,5 +1,12 @@
 # VectorAPI
 
+## Instructions
+    
+    Clone the repository
+    
+    git clone https://github.com/bppwd2020-bourassa/VectorAPI.git
+
+
 ## Methods
     
      |  __init__(self, serial)
