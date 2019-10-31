@@ -45,8 +45,8 @@ while 1:
             print("going up")
             vector._VectorOBJ__set_wheel_motors(50, 50)
 
-        else:
-            vector._VectorOBJ__stop_wheel_motors
+        if joystick.getMotion():
+            vector.stop_wheel_motors()
 
         joystick.draw(screen)
         joystick.update()

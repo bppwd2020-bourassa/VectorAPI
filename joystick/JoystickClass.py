@@ -20,6 +20,7 @@ class Joystick:
         self.clickX = pygame.mouse.get_pos()[0]
         self.clickY = pygame.mouse.get_pos()[1]
         if pygame.mouse.get_pressed()[0] == 1:
+            self.stop = True
             if self.clickX >= self.x and self.clickX <= self.x + self.width and self.clickY >= self.y and self.clickY <= self.y + self.height:
                 self.stop = False
                 self.x = self.clickX - 25
@@ -28,7 +29,6 @@ class Joystick:
                 print(self.clickX, self.clickY)
                 self.x = 175
                 self.y = 175
-                self.stop = True
         else:
             self.x = 175
             self.y = 175
