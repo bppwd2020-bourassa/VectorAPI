@@ -36,6 +36,11 @@ class Joystick:
             self.x = 175
             self.y = 175
 
+    def getX(self):
+        return self.x
+
+    def getY(self):
+        return self
 
 clock = pygame.time.Clock()
 joystick = Joystick()
