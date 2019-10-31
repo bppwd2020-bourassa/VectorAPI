@@ -1,12 +1,6 @@
 import pygame, sys, random
 from pygame.locals import *
 
-w = 400
-h = 400
-
-screen = pygame.display.set_mode((w,h))
-
-pygame.display.update()
 
 class Joystick:
 
@@ -16,7 +10,7 @@ class Joystick:
             self.height = 50
             self.width = 50
 
-    def draw(self):
+    def draw(self, screen):
     	pygame.draw.rect(screen,(0,0,0),pygame.Rect(self.x,self.y,self.width,self.height))
 
     def update(self):
@@ -40,22 +34,10 @@ class Joystick:
         return self.x
 
     def getY(self):
-        return self
+        return self.y
 
-clock = pygame.time.Clock()
-joystick = Joystick()
+    def getMouseX(self):
+        return self.clickX
 
-while 1:
-        clock.tick(60)
-        x,y = pygame.mouse.get_pos()
-        for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                        sys.exit()
-
-
-        screen.fill((255,255,255))
-
-        joystick.draw()
-        joystick.update()
-
-        pygame.display.update()
+    def getMouseY(self):
+        return self.clickY
