@@ -29,21 +29,24 @@ while 1:
 
         screen.fill((255,255,255))
 
-        if joystick.getX() > 175 and joystick.getY() < 195:
+        if joystick.getX() > 180 and joystick.getY() < 200 and joystick.getY() > 150:
             print("going right")
-            vector.__set_wheel_motors(25, 50)
+            vector._VectorOBJ__set_wheel_motors(-50, 50)
 
-        if joystick.getX() < 175 and joystick.getY() < 195:
+        if joystick.getX() < 175 and joystick.getY() < 200 and joystick.getY() > 150:
             print("going left")
-            vector.__set_wheel_motors(50,25)
+            vector._VectorOBJ__set_wheel_motors(50, -50)
 
-        if joystick.getY() > 175 and joystick.getX() < 195:
+        if joystick.getY() > 180 and joystick.getX() > 150 and joystick.getX() < 200:
             print("going down")
-            vector.__set_wheel_motors(-50, -50)
+            vector._VectorOBJ__set_wheel_motors(-50, -50)
 
-        if joystick.getY() < 175 and joystick.getX() < 195:
+        if joystick.getY() < 175 and joystick.getX() > 150 and joystick.getX() < 200:
             print("going up")
-            vector.__set_wheel_motors(-50, -50)
+            vector._VectorOBJ__set_wheel_motors(50, 50)
+
+        else:
+            vector._VectorOBJ__stop_wheel_motors
 
         joystick.draw(screen)
         joystick.update()
