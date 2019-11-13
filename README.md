@@ -6,7 +6,7 @@
     
     Clone the repository
     
-    git clone '''repo link'''
+    git clone **repo link**
     
-    Install the sdk by using '''py -3 -m pip install --user anki_vector'''
+    Install the sdk by using ```py -3 -m pip install --user anki_vector```
      
