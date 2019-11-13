@@ -1,13 +1,9 @@
-# VectorAPI
+# README
 
-## Instructions
-    
-Make sure python 3.6.1 or later is installed. [Install here](https://www.python.org/downloads/windows/)
-    
-Clone the repository
-    
-git clone **repo link**
-    
-Install the sdk by using ```py -3 -m pip install --user anki_vector```
+The Vector Exploratory Library is designed to enable freshman students to program the Vector Robots without having to fully understand the Vector SDK.  The robot.py file provides an object oriented robot class that encapsulates common functionality of the Vector robots.  
 
-Configure connection files by ~~running ```py -m anki_vector.configure``` or~~ putting the .anki_vector folder included in the Users folder
+#### Environment Setup
+
+- Python 3.6.1 or later is required. [Install Here](https://www.python.org/downloads/windows/)
+- Install the sdk by running ```py -3 -m pip install --user anki_vector```
+- Move the ```.anki_vector``` folder to the your user file path ex. ```C:\Users\nao\```
